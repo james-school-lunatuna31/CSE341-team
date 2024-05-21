@@ -16,3 +16,14 @@ const publisherRoute = require('./routes/publisher');
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+
+//Database
+mongo.initDb((err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        app.listen(port);
+        console.log(`The server is running on ${port} port.`)
+    }
+});
