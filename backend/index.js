@@ -4,9 +4,24 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('./database/db');
 
+//Swagger Documentation Autogen
+const swagger = require('swagger-autogen');
+const swaggerUI = require('swagger-ui-express');
+const swaggerDoc = require('./swagger.json');
+
 //Authentication
 const { auth, requiresAuth } = require('express-openid-connect');
 require('dotenv').config();
+
+//Auth0 config
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.SECRET,
+    baseURL: process.env.BASE_URL,
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: process.env.ISSUER_BASE_URL
+};
 
 //Routes imports
 const libraryRoute = require('./routes/library');
@@ -18,7 +33,25 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 
-//Database
+//Application 'logic'
+app
+    .use(auth(config))
+    .use(bodyParser.json())
+    .use('/api-docs', requiresAuth(), swaggerUI.serve, swaggerUI.setup(swaggerDoc))
+
+
+//Login/logout logic.
+app.get('/', (req, res) => {
+    //Get username of the user from Auth0, and remove the quotation marks from the json.
+    let userNick = JSON.stringify(req.oidc.user.nickname).replace(/"/g, "");
+    res.send(req.oidc.isAuthenticated() ? `Logged in as ${getUsername(userNick)}` : "You are logged out");
+});
+app.get('/myuser', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user));
+});
+
+
+//Database initialization / connection.
 mongo.initDb((err) => {
     if (err) {
         console.log(err);
@@ -27,3 +60,13 @@ mongo.initDb((err) => {
         console.log(`The server is running on ${port} port.`)
     }
 });
+
+
+//Function to capitalize the first letter of the username...
+const getUsername = (username) => {
+    return username
+        .toLowerCase()
+        .split(' ')
+        .map(letter => letter.charAt(0).toUpperCase() + letter.slice(1))
+        .join(' ');
+};
