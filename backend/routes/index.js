@@ -6,7 +6,7 @@ const libraryRoute = require('./library');
 
 route
     .use('/', require('./swaggergen'))
-    .use('/users', userRoute)
+    .use('/user', userRoute)
     .use('/library', libraryRoute)
     .use('/library/checkout', libraryRoute)
 

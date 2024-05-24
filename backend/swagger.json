@@ -11,9 +11,9 @@
     "https"
   ],
   "paths": {
-    "/users/": {
+    "/user/": {
       "get": {
-        "description": "(Will be deprecated in the future of the project) Endpoint that contains all users, requires verification to access.",
+        "description": "(Will be deprecated in the future of the project) Endpoint that contains all user, requires verification to access.",
         "produces": [
           "application/json"
         ],
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/users/{id}": {
+    "/user/{id}": {
       "get": {
         "description": "Receives a user by ID",
         "produces": [
