@@ -6,10 +6,10 @@ const router = express.Router();
 router
     .get('/', libraryController.getList)
     .get('/:id', libraryController.getSingle)
-    .put('/checkout/:id', libraryController.checkoutBook)
     .post('/', validate.validateBook, libraryController.addBook)
     .put('/:id', validate.validateBook, libraryController.updateBook)
     .delete('/:id', libraryController.deleteBook)
+    .put('/checkout/:id', libraryController.checkoutBook)
 
 
 module.exports = router;

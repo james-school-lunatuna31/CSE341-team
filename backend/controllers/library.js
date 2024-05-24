@@ -32,7 +32,7 @@ const getSingle = async (req, res) => {
             res.status(200).json(book[0]);
         });
     } else {
-        res.status(400).json(response.error || errorMsg);
+        res.status(500).json(response.error || errorMsg);
     };
 };
 
