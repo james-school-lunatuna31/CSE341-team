@@ -35,7 +35,7 @@ const getSingle = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-    let permissions = role.getRole(req);
+    var permissions = role.getRole(req);
     if (permissions === process.env.ADMIN) {
         const user = {
             firstName: req.body.firstName,
