@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
         });
     } else {
         res.status(500).json(res.error || errorMsg)
-    };
+    }
 };
 
 
@@ -30,7 +30,7 @@ const getSingle = async (req, res) => {
         });
     } else {
         res.status(500).json(response.error || errorMsg);
-    };
+    }
 };
 
 
@@ -51,7 +51,7 @@ const createUser = async (req, res) => {
         };
     } else {
         res.status(350).json('You do not possess the required permissions to do this.');
-    };
+    }
 };
 
 
@@ -76,7 +76,7 @@ const updateUser = async (req, res) => {
         };
     } else {
         res.status(350).json('You do not possess the required permissions to do this.')
-    };
+    }
 };
 
 
@@ -93,7 +93,7 @@ const deleteUser = async (req, res) => {
         } else {
             res.status(500).json(response.error || errorMsg);
         };
-    };
+    }
 };
 
 

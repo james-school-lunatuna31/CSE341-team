@@ -16,7 +16,7 @@ const getList = async (req, res) => {
         });
     } else {
         res.status(500).json(response.error || errorMsg);
-    };
+    }
 };
 
 
@@ -33,7 +33,7 @@ const getSingle = async (req, res) => {
         });
     } else {
         res.status(500).json(response.error || errorMsg);
-    };
+    }
 };
 
 
@@ -67,7 +67,7 @@ const checkoutBook = async (req, res) => {
         };
     } else {
         res.status(350).json('You do not possess the required permissions to check out a book.');
-    };
+    }
 };
 
 
