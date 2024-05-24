@@ -4,4 +4,6 @@ const validate = require('../middleware/validation');
 const router = express.Router();
 
 router
-    .get('/', userController.getAll);
+    .get('/', userController.getAll)
+
+    module.exports = router;

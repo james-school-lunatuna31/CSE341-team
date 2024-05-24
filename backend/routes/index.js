@@ -5,7 +5,10 @@ const publisherRoute = require('./publisher');
 const libraryRoute = require('./library');
 
 route
-    .use('/', require('./swaggergen'));
+    .use('/', require('./swaggergen'))
+    .use('/users', userRoute)
+    .use('/library', libraryRoute)
+    .use('/library/checkout', libraryRoute)
 
 
 module.exports = route;

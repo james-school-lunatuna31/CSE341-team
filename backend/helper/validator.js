@@ -1,6 +1,6 @@
 /*
-Helper for validation.js middleware to validate fields in POST
-and PUT requests.
+* Helper for validation.js middleware to validate fields in POST
+* and PUT requests.
 */
 const Validator = require('validatorjs');
 

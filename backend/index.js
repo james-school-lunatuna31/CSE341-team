@@ -38,15 +38,28 @@ app
     .use(auth(config))
     .use(bodyParser.json())
     .use('/api-docs', requiresAuth(), swaggerUI.serve, swaggerUI.setup(swaggerDoc))
-
+    .use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+    })
+    .use('/library', requiresAuth(), libraryRoute)
+    .use('/library/checkout', requiresAuth(), libraryRoute)
+    .use('/user', requiresAuth(), userRoute)
 
 //Login/logout logic.
 app.get('/', (req, res) => {
     //Get username of the user from Auth0, and remove the quotation marks from the json.
-    let userNick = JSON.stringify(req.oidc.user.nickname).replace(/"/g, "");
-    res.send(req.oidc.isAuthenticated() ? `Logged in as ${getUsername(userNick)}` : "You are logged out");
+    //Check if the user is logged in, if the user is logged in it will grab
+    //the user nickname and use the getUsername function to capitalize it.
+    //otherwise, you would be logged out.
+    if (req.oidc.isAuthenticated()) {
+        let username = JSON.stringify(req.oidc.user.nickname).replace(/"/g, "");
+        res.send(`Logged in as ${getUsername(username)}`);
+    } else {
+        res.send('You are logged out.')
+    }
 });
-app.get('/myuser', requiresAuth(), (req, res) => {
+app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
