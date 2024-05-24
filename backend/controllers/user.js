@@ -10,7 +10,7 @@ const getAll = async (req, res) => {
         result.toArray().then((users) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(users);
-        });
+        })
     } else {
         res.status(500).json(res.error || errorMsg)
     }
@@ -27,7 +27,7 @@ const getSingle = async (req, res) => {
         result.toArray().then((user) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(user[0]);
-        });
+        })
     } else {
         res.status(500).json(response.error || errorMsg);
     }
@@ -35,8 +35,8 @@ const getSingle = async (req, res) => {
 
 
 const createUser = async (req, res) => {
-    var permissions = role.getRole(req);
-    if (permissions === process.env.ADMIN) {
+    // var permissions = role.getRole(req);
+    // if (permissions === process.env.ADMIN) {
         const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -48,16 +48,16 @@ const createUser = async (req, res) => {
             res.status(204).send();
         } else {
             res.status(500).json(response.error || errorMsg);
-        };
-    } else {
-        res.status(350).json('You do not possess the required permissions to do this.');
-    }
+        }
+    // } else {
+    //     res.status(350).json('You do not possess the required permissions to do this.');
+    // }
 };
 
 
 const updateUser = async (req, res) => {
-    let permissions = role.getRole(req);
-    if (permissions === process.env.ADMIN) {
+    // let permissions = role.getRole(req);
+    // if (permissions === process.env.ADMIN) {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid ID.');
         }
@@ -73,16 +73,16 @@ const updateUser = async (req, res) => {
             res.status(204).send();
         } else {
             res.status(500).json(response.error || errorMsg);
-        };
-    } else {
-        res.status(350).json('You do not possess the required permissions to do this.')
-    }
+        }
+    // } else {
+    //     res.status(350).json('You do not possess the required permissions to do this.')
+    // }
 };
 
 
 const deleteUser = async (req, res) => {
-    let permissions = role.getRole(req);
-    if (permissions === process.env.ADMIN) {
+    // let permissions = role.getRole(req);
+    // if (permissions === process.env.ADMIN) {
         if (!ObjectId.isValid(req.params.id)) {
             res.status(400).json('Must use a valid ID');
         }
@@ -92,8 +92,8 @@ const deleteUser = async (req, res) => {
             res.status(204).send();
         } else {
             res.status(500).json(response.error || errorMsg);
-        };
-    }
+        }
+    // }
 };
 
 

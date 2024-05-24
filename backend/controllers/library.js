@@ -90,17 +90,17 @@ const addBook = async (req, res) => {
         stock: req.body.stock
     };
     //Experimental
-    let permissions = role.getRole(req);
-    if (permissions === process.env.ADMIN) {
+    // let permissions = role.getRole(req);
+    // if (permissions === process.env.ADMIN) {
         const response = await mongo.checkDb().db().collection('library').insertOne(book);
         if (response) {
             res.status(204).send();
         } else {
             res.status(500).json(response.error || errorMsg);
         }
-    } else {
-        res.status(350).json('You do not possess the required permissions..');
-    }
+    // } else {
+    //     res.status(350).json('You do not possess the required permissions..');
+    // }
 };
 
 
