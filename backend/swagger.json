@@ -5,7 +5,7 @@
     "description": "An application program interface to manage data between the front end and back end of the library application. This application was built for CSE341 by Austin Campbell and James Green.",
     "version": "1.0.0"
   },
-  "host": "https://cse341-team-library.onrender.com",
+  "host": "cse341-team-library.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
