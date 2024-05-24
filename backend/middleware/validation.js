@@ -18,7 +18,7 @@ const validateBook = (req, res, next) => {
                 res.status(412).send({
                     success: false,
                     message: "Validation failed.",
-                    data: error
+                    data: err
                 });
             } else {
                 next();
@@ -40,7 +40,7 @@ const validateUser = (req, res, next) => {
             res.status(412).send({
                 success: false,
                 message: "Validation Failed",
-                data: error
+                data: err
             });
         } else {
             next();

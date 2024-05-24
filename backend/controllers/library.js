@@ -91,7 +91,7 @@ const addBook = async (req, res) => {
     };
     //Experimental
     let permissions = role.getRole(req);
-    if (permissions == process.env.PUBLISHER) {
+    if (permissions == process.env.ADMIN) {
         const response = await mongo.checkDb().db().collection('library').insertOne(book);
         if (response) {
             res.status(204).send();
