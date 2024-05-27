@@ -52,6 +52,7 @@ const isbnValidator = (isbn, callback) => {
         validation.fails(() => callback(validation.errors, false));
         console.log("Validation failed");
     }
+    return variable;
 };
 
 
