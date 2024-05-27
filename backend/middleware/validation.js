@@ -23,14 +23,14 @@ const validateBook = (req, res, next) => {
             next();
         }
     });
-    if (val.isbnValidator(req.body[4]) == false) {
-        res.status(413).send({
-            success: false,
-            message: "ISBN Validation failed"
-        });
-    } else {
-        next()
-    }
+    // if (val.isbnValidator(req.body[4]) == false) {
+    //     res.status(413).send({
+    //         success: false,
+    //         message: "ISBN Validation failed"
+    //     });
+    // } else {
+    //     next()
+    // }
 };
 
 
