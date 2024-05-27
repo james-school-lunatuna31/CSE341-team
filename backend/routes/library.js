@@ -6,8 +6,8 @@ const router = express.Router();
 router
     .get('/', libraryController.getList)
     .get('/:id', libraryController.getSingle)
-    .post('/', validate.validateBook, libraryController.addBook)
-    .put('/:id', validate.validateBook, libraryController.updateBook)
+    .post('/', libraryController.addBook)
+    .put('/:id', libraryController.updateBook)
     .delete('/:id', libraryController.deleteBook)
     .put('/checkout/:id', libraryController.checkoutBook)
 
