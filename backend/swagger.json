@@ -221,6 +221,9 @@
           "412": {
             "description": "Data validation error, check required fields"
           },
+          "413": {
+            "description": "ISBN Failed a validation check, please verify ISBN is correct"
+          },
           "500": {
             "description": "Internal Server Error"
           }
