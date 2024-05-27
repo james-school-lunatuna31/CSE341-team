@@ -1,4 +1,5 @@
 const validate = require('../helper/validator');
+//The import was the problem.
 const isbnValidator = require('../helper/isbnvalidator');
 
 
@@ -16,25 +17,24 @@ const validateBook = (req, res, next) => {
     let isbnCheck = isbnValidator(req.body.isbn);
     console.log(isbnCheck);
     console.log(test)
-    validate(req.body, validRules, {}, (err, status) => {
-        if (!status) {
-            res.status(412).send({
-                success: false,
-                message: "Validation Failed",
-                data: err
-            });
-        } else {
-            next();
-        }
-    });
-    // if (val.isbnValidator(req.body[4]) == false) {
-    //     res.status(413).send({
-    //         success: false,
-    //         message: "ISBN Validation failed"
-    //     });
-    // } else {
-    //     next()
-    // }
+    if (isbnCheck) {
+        validate(req.body, validRules, {}, (err, status) => {
+            if (!status) {
+                res.status(412).send({
+                    success: false,
+                    message: "Validation Failed",
+                    data: err
+                });
+            } {
+                next();
+            }
+        })
+    } else {
+        res.status(413).send({
+            success: false,
+            message: "ISBN Validation failed"
+        });
+    };
 };
 
 
