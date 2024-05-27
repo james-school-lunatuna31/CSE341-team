@@ -1,6 +1,5 @@
 const validate = require('../helper/validator');
 const val = require('../helper/isbnvalidator');
-const isbnValidator = require('../helper/isbnvalidator');
 
 
 
@@ -21,18 +20,17 @@ const validateBook = (req, res, next) => {
                 data: err
             });
         } else {
-            let isbn = val.isbnValidator(req.body.isbn, (err))
-            if (!isbn) {
-                res.status(412).send({
-                    success: false,
-                    message: "ISBN Validation failed",
-                    data: err
-                });
-            } else {
-                next();
-            }
+            next();
         }
-    })
+    });
+    if (val.isbnValidator(req.body[4]) == false) {
+        res.status(413).send({
+            success: false,
+            message: "ISBN Validation failed"
+        });
+    } else {
+        next()l
+    }
 };
 
 

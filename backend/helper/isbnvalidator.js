@@ -3,8 +3,7 @@ const Validate = require('validatorjs');
 /*
 * Validates an ISBN number, requires an isbn as a parameter.
 */
-const isbnValidator = (isbn, callback) => {
-    const validation = new Validator(isbn);
+const isbnValidator = (isbn) => {
     let variable = null;
 
     isbn = isbn.replace(/-/g, '');
