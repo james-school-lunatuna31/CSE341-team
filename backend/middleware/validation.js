@@ -1,5 +1,5 @@
 const validate = require('../helper/validator');
-const val = require('../helper/isbnvalidator');
+const isbnValidator = require('../helper/isbnvalidator');
 
 
 
@@ -12,8 +12,9 @@ const validateBook = (req, res, next) => {
         isbn: "required|string",
         stock: "required|integer"
     };
-    let test = console.log(req.body);
-    let isbnCheck = val.isbnValidator(req.body);
+    let test = console.log(req.body, "hi");
+    let isbnCheck = isbnValidator(req.body.isbn);
+    console.log(isbnCheck);
     validate(req.body, validRules, {}, (err, status) => {
         if (!status) {
             res.status(412).send({
