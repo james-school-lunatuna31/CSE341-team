@@ -45,13 +45,6 @@ const isbnValidator = (isbn, callback) => {
         variable = checkSum === parseInt(isbn[12]);
     }
 
-    if (variable) {
-        validation.passes(); // => callback(null, true) was in here, not working?
-        console.log("testing here in conditional.");
-    } else {
-        validation.fails(() => callback(validation.errors, false));
-        console.log("Validation failed");
-    }
     return variable;
 };
 
