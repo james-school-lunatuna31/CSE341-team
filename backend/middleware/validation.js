@@ -29,7 +29,7 @@ const validateBook = (req, res, next) => {
             message: "ISBN Validation failed"
         });
     } else {
-        next()l
+        next()
     }
 };
 
