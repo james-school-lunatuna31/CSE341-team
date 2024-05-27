@@ -14,7 +14,7 @@ const validator = (body, rules, customMsg, callback) => {
 /*
 * Validates an ISBN number, requires an isbn as a parameter.
 */
-function isbnValidator(isbn, callback) {
+const isbnValidator = (isbn, callback) => {
     const validation = new Validator(isbn);
     let variable = null;
 
