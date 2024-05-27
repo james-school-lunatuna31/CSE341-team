@@ -15,6 +15,7 @@ const validateBook = (req, res, next) => {
     let test = console.log(req.body, "hi");
     let isbnCheck = isbnValidator(req.body.isbn);
     console.log(isbnCheck);
+    console.log(test)
     validate(req.body, validRules, {}, (err, status) => {
         if (!status) {
             res.status(412).send({
