@@ -1,18 +1,18 @@
 # Sub branch of the team project for Library application.
 
-### Will not run as it should in this commit, library.js controller is unfinished.
+### STABLE
 
 Authors: Austin Campbell & James Green
 
 TODO:
 - Rename the "getList" function to getCatalogue".
-- Get required routes/controllers sorted and working (users and library)
-- Work on framework / logic for permissions / roles from Auth0 (Keeps us from having complicated checks in place? Already have an idea on this.)
-- DOCUMENTATION! Do not forget!
-- Add data to the users? Do we need this though, because we are storing users in Auth0 user management system for roles and authentication..
-- Add roles | roleIds to .env to use in the controllers.
-- Re-think where to handle the role / permissions?
 
-If we handle roles / permissions in the controller, it can be passed into another endpoint as a parameter? Would it be better to do a role check like the requiresAuth() function?
+
 
 #### COMPLETED:
+~~Work on framework / logic for permissions / roles from Auth0~~
+~~Documentation~~
+~~Temporary Users section in database + routes/controllers~~
+~~Role IDs to .env, can be used to check permissions~~
+~~Roles is handled in a helper~~
+~~Users and Library routes and controllers working as expected now as of 27MAY2024~~

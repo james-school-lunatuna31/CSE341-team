@@ -181,7 +181,7 @@
         }
       },
       "post": {
-        "description": "Adds a new book to the library, requires verification and will require publisher role.",
+        "description": "Adds a new book to the library, requires verification and will require publisher role. Verifies the ISBN first, then the body data.",
         "parameters": [
           {
             "name": "body",
