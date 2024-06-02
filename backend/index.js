@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
         res.send('You are logged out.')
     }
 });
-app.get('/profile', requiresAuth(), (req, res) => {
+app.get('/admin', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });
 
