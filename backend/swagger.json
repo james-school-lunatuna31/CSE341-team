@@ -281,6 +281,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Library"
+        ],
         "description": "Updates the content of a book in the library.",
         "parameters": [
           {

@@ -46,7 +46,7 @@ app
     //This is an added post method to the libraryRoute.
     .use('/library/checkout', requiresAuth(), libraryRoute)
     .use('/user', requiresAuth(), userRoute)
-    .use('/authors', requiresAuth(), authorRoute)
+    .use('/author', requiresAuth(), authorRoute)
     .use('/membership', requiresAuth(), membershipRoute)
 
 //Login/logout logic.
