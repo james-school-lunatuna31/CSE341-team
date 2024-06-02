@@ -13,6 +13,9 @@
   "paths": {
     "/user/": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "(Will be deprecated in the future of the project) Endpoint that contains all user, requires verification to access.",
         "produces": [
           "application/json"
@@ -27,6 +30,9 @@
         }
       },
       "post": {
+        "tags": [
+          "User"
+        ],
         "description": "Creates a new user.",
         "parameters": [
           {
@@ -69,6 +75,9 @@
     },
     "/user/{id}": {
       "get": {
+        "tags": [
+          "User"
+        ],
         "description": "Receives a user by ID",
         "produces": [
           "application/json"
@@ -94,6 +103,9 @@
         }
       },
       "put": {
+        "tags": [
+          "User"
+        ],
         "description": "Updates an existing user by ID.",
         "parameters": [
           {
@@ -143,6 +155,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "User"
+        ],
         "description": "Deletes a user in the database by ID.",
         "parameters": [
           {
@@ -167,6 +182,9 @@
     },
     "/library/": {
       "get": {
+        "tags": [
+          "Library"
+        ],
         "description": "Retrieves all books in the library.",
         "produces": [
           "application/json"
@@ -181,6 +199,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Library"
+        ],
         "description": "Adds a new book to the library, requires verification and will require publisher role. Verifies the ISBN first, then the body data.",
         "parameters": [
           {
@@ -232,6 +253,9 @@
     },
     "/library/{id}": {
       "get": {
+        "tags": [
+          "Library"
+        ],
         "description": "Retrieves a single book in the library by the ID.",
         "produces": [
           "application/json"
@@ -309,6 +333,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Library"
+        ],
         "description": "Deletes a book from the library by the ID number",
         "parameters": [
           {
@@ -333,6 +360,9 @@
     },
     "/library/checkout/{id}": {
       "put": {
+        "tags": [
+          "Library"
+        ],
         "description": "Checks out one book from the inventory of the library and updates it in the database.",
         "parameters": [
           {
@@ -376,6 +406,9 @@
     },
     "/author/": {
       "get": {
+        "tags": [
+          "Authors"
+        ],
         "description": "Retrieves all authors stored in the database, includes the books they have in the library.",
         "produces": [
           "application/json"
@@ -539,6 +572,9 @@
     },
     "/membership/": {
       "get": {
+        "tags": [
+          "Membership"
+        ],
         "description": "Retrieves all memberships actively stored in the database, includes the userId they are.",
         "produces": [
           "application/json"
@@ -553,6 +589,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Membership"
+        ],
         "description": "Creates a new membership for a user using the required fields.",
         "parameters": [
           {
@@ -595,6 +634,9 @@
     },
     "/membership/{id}": {
       "get": {
+        "tags": [
+          "Membership"
+        ],
         "description": "Retrieves a single membership by the membership ID or the userId.",
         "produces": [
           "application/json"
@@ -620,6 +662,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Membership"
+        ],
         "description": "Updates the fields of a membership in the database.",
         "parameters": [
           {
@@ -669,6 +714,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Membership"
+        ],
         "description": "Deletes a membership from the database",
         "parameters": [
           {

@@ -47,7 +47,7 @@ app
     .use('/library/checkout', requiresAuth(), libraryRoute)
     .use('/user', requiresAuth(), userRoute)
     .use('/authors', requiresAuth(), authorRoute)
-    .use('/memberships', requiresAuth(), membershipRoute)
+    .use('/membership', requiresAuth(), membershipRoute)
 
 //Login/logout logic.
 app.get('/', (req, res) => {
