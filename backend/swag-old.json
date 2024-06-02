@@ -94,7 +94,7 @@
         }
       },
       "put": {
-        "description": "Updates an existing user by ID.",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -109,16 +109,16 @@
               "type": "object",
               "properties": {
                 "firstName": {
-                  "example": "Jeffery"
+                  "example": "any"
                 },
                 "lastName": {
-                  "example": "Smith"
+                  "example": "any"
                 },
                 "userName": {
-                  "example": "jsmith2015"
+                  "example": "any"
                 },
                 "role": {
-                  "example": "Publisher"
+                  "example": "any"
                 }
               }
             }
@@ -143,7 +143,7 @@
         }
       },
       "delete": {
-        "description": "Deletes a user in the database by ID.",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -154,7 +154,7 @@
         ],
         "responses": {
           "204": {
-            "description": "OK"
+            "description": "No Content"
           },
           "400": {
             "description": "ID does not match IDs in the Database."
@@ -367,323 +367,6 @@
           },
           "412": {
             "description": "Data validation error, check required fields"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/author/": {
-      "get": {
-        "description": "Retrieves all authors stored in the database, includes the books they have in the library.",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "Creates a new author, only useable by a admin after validation.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "Herman"
-                },
-                "lastName": {
-                  "example": "Melville"
-                },
-                "id": {
-                  "example": "Books IDs from DB"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "OK"
-          },
-          "350": {
-            "description": "Missing required role to perform action"
-          },
-          "412": {
-            "description": "Data validation error, check required fields"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/author/{id}": {
-      "get": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "Retrieves a single author by their ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "Updates an existing author, only useable by a admin after validation.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "Herman"
-                },
-                "lastName": {
-                  "example": "Melville"
-                },
-                "id": {
-                  "example": "ID #s to change"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "350": {
-            "description": ""
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "412": {
-            "description": "Precondition Failed"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Authors"
-        ],
-        "description": "Deletes an existing author, only useable by a admin after validation. Does not affect books.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "OK"
-          },
-          "350": {
-            "description": "Missing required role to perform action"
-          },
-          "400": {
-            "description": "ID does not match IDs in the Database."
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/membership/": {
-      "get": {
-        "description": "Retrieves all memberships actively stored in the database, includes the userId they are.",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new membership for a user using the required fields.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "Sarah"
-                },
-                "lastName": {
-                  "example": "Fasciano"
-                },
-                "userId": {
-                  "example": "none"
-                },
-                "membershipType": {
-                  "example": "gold"
-                },
-                "memberSince": {
-                  "example": "05/31/2024"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "OK"
-          },
-          "412": {
-            "description": "Data validation error, check required fields"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/membership/{id}": {
-      "get": {
-        "description": "Retrieves a single membership by the membership ID or the userId.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "Updates the fields of a membership in the database.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "Sarah"
-                },
-                "lastName": {
-                  "example": "Fasciano"
-                },
-                "userId": {
-                  "example": "none"
-                },
-                "membershipType": {
-                  "example": "platinum"
-                },
-                "memberSince": {
-                  "example": "05/31/2024"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "ID does not match IDs in the Database."
-          },
-          "412": {
-            "description": "Data validation error, check required fields"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "description": "Deletes a membership from the database",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "ID does not match IDs in the Database."
           },
           "500": {
             "description": "Internal Server Error"

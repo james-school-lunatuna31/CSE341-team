@@ -26,9 +26,8 @@ const config = {
 //Routes imports
 const libraryRoute = require('./routes/library');
 const userRoute = require('./routes/user');
-//  Unused
-const adminRoute = require('./routes/admin');
-const publisherRoute = require('./routes/publisher');
+const authorRoute = require('./routes/author');
+const membershipRoute = require('./routes/memberships');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -44,8 +43,11 @@ app
         next();
     })
     .use('/library', requiresAuth(), libraryRoute)
+    //This is an added post method to the libraryRoute.
     .use('/library/checkout', requiresAuth(), libraryRoute)
     .use('/user', requiresAuth(), userRoute)
+    .use('/authors', requiresAuth(), authorRoute)
+    .use('/memberships', requiresAuth(), membershipRoute)
 
 //Login/logout logic.
 app.get('/', (req, res) => {

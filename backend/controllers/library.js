@@ -16,7 +16,7 @@ const getList = async (req, res) => {
         });
     } else {
         res.status(500).json(response.error || errorMsg);
-    }
+    };
 };
 
 
@@ -33,7 +33,7 @@ const getSingle = async (req, res) => {
         });
     } else {
         res.status(500).json(response.error || errorMsg);
-    }
+    };
 };
 
 
@@ -67,7 +67,7 @@ const checkoutBook = async (req, res) => {
         };
     } else {
         res.status(350).json('You do not possess the required permissions to check out a book.');
-    }
+    };
 };
 
 
@@ -101,7 +101,7 @@ const addBook = async (req, res) => {
         }
     } else {
         res.status(350).json('You do not possess the required permissions..');
-    }
+    };
 };
 
 
@@ -123,7 +123,7 @@ const updateBook = async (req, res) => {
         res.status(204).send();
     } else {
         res.status(500).json(response.error || errorMsg);
-    }
+    };
 };
 
 
@@ -137,7 +137,7 @@ const deleteBook = async (req, res) => {
         res.status(204).send();
     } else {
         res.status(500).json(response.error || errorMsg);
-    }
+    };
 };
 
 
@@ -148,4 +148,4 @@ module.exports = {
     addBook,
     updateBook,
     deleteBook
-}
+};
